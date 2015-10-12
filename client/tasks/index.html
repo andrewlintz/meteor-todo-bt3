@@ -1,0 +1,59 @@
+<head>
+    <title>todo2</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <!--<li role="presentation"><a href="#">Profile</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>-->
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            {{> loginButtons}}
+        </div>
+    </div>
+</div>
+
+<hr/>
+
+<div class="container">
+    {{#if currentUser}}
+    <div class="row">
+        <form id="new-task" class="form-group col-sm-12">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="A new Task">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Go!</button>
+                            </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label class="hiddenChecked">
+                        <input type="checkbox" checked="{{hideFinished}}"/>
+                        Hide finished Tasks
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+    {{/if}}
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-group">
+                {{#each tasks}}
+                {{> taskes}}
+                {{/each}}
+            </ul>
+        </div>
+
+    </div>
+</div>
+{{> deleteItem}}
+{{> publicItem}}
+</body>
