@@ -21,3 +21,6 @@ ian:accounts-ui-bootstrap-3
 momentjs:moment
 accounts-password
 accounts-base
+iron:router
+sacha:spin
+aldeed:autoform

@@ -9,6 +9,8 @@ Meteor.methods({
         Tasks.insert({
             text: title,
             createdAt: new Date(),
+            editedAt: new Date(),
+            description: "Nothig yet",
             private: true,
             owner: Meteor.userId()
         });
@@ -19,7 +21,19 @@ Meteor.methods({
         if(tas.owner !== Meteor.userId()){
             throw new Meteor.error('not-authorized');
         }
-        Tasks.update(id, {$set: {checked: checked}})
+        Tasks.update(id, {$set: {checked: checked}});
+    },
+
+    updateFullTask: function(id, text, description){
+        var tas = Tasks.findOne(id);
+        if(tas.owner !== Meteor.userId()){
+            throw new Meteor.error('not-authorized');
+        }
+        Tasks.update(id, {$set:{
+            text: text,
+            description: description,
+            editedAt: new Date()
+        }});
     },
 
     deleteTasks: function(id){

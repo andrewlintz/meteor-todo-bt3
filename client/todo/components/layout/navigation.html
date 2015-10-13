@@ -1,0 +1,15 @@
+<template name="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <ul class="nav nav-pills">
+                    <li role="presentation" class=""><a href="{{pathFor route='home'}}">Home</a></li>
+                    <li role="presentation" class=""><a href="{{pathFor route='about'}}">About</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                {{> loginButtons}}
+            </div>
+        </div>
+    </div>
+</template>

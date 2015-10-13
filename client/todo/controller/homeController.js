@@ -1,6 +1,6 @@
 Meteor.subscribe("tasks");
 
-Template.body.helpers({
+Template.Home.helpers({
     tasks: function(){
         if (Session.get('hiddenChecked')){
             return Tasks.find({checked: {$ne:true}});
@@ -9,7 +9,7 @@ Template.body.helpers({
     }
 });
 
-Template.body.events({
+Template.Home.events({
 
     // Definimos el DOM selector y el evento que pasamos.
     'submit #new-task' : function(event){
@@ -85,6 +85,18 @@ Template.publicItem.events({
     }
 
 });
+
+Template.taskItem.events({
+    'submit #edit-task': function(event){
+        event.preventDefault();
+        var id = this._id;
+        var text = event.target.text.value;
+        var description = event.target.description.value;
+        Meteor.call("updateFullTask", id, text, description);
+        Router.go('/');
+    }
+});
+
 
 // Los valores se devuelven en forma de función
 Template.registerHelper("localizedDateAndTime", function(date) {

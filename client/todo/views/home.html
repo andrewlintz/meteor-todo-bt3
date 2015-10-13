@@ -1,0 +1,39 @@
+<template name="Home">
+    <h2>Todos</h2>
+    <div class="container">
+        {{#if currentUser}}
+        <div class="row">
+            <form id="new-task" class="form-group col-sm-12">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="A new Task">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="hiddenChecked">
+                            <input type="checkbox" checked="{{hideFinished}}"/>
+                            Hide finished Tasks
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {{/if}}
+
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-group">
+                    {{#each tasks}}
+                    {{> taskes}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{> deleteItem}}
+    {{> publicItem}}
+</template>
