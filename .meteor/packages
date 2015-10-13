@@ -24,3 +24,5 @@ accounts-base
 iron:router
 sacha:spin
 aldeed:autoform
+matb33:bootstrap-component-animations
+webtempest:animate

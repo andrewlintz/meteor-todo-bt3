@@ -10,11 +10,19 @@
         <hr/>
 
         <main>
+            {{#transition in="fadeInLeft" out="fadeOutRight"}}
             {{> yield}}
+            {{/transition}}
         </main>
         <hr />
         <footer>
-            <p>Copyright &copy; Todos, 2014-2015.</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Creative Communs | Todos, 2015.</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </body>
 

@@ -1,5 +1,14 @@
 Meteor.subscribe("tasks");
 
+// Template.navigation debera ir en otro archivo
+Template.navigation.helpers({
+    maybeSelected: function () {
+        var currentRoute = Router.current();
+        return currentRoute &&
+        this._id === currentRoute.params._id ? 'selected' : '';
+    }
+});
+
 Template.Home.helpers({
     tasks: function(){
         if (Session.get('hiddenChecked')){
@@ -103,6 +112,9 @@ Template.registerHelper("localizedDateAndTime", function(date) {
     if(date)
         return moment(date).format('l LT');
 });
+
+
+
 
 // Editamos los valores en la casilla de singup
 Template._loginButtonsLoggedInDropdown.events({
