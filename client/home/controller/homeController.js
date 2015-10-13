@@ -3,8 +3,6 @@ Meteor.subscribe("events");
 Template.body.rendered = function () {
     var fc = this.$('.fc');
     this.autorun(function () {
-        //1) trigger event re-rendering when the collection is changed in any way
-        //2) find all, because we've already subscribed to a specific range
         Events.find();
         fc.fullCalendar('refetchEvents');
     });
@@ -36,7 +34,6 @@ Template.calendarEdit.helpers({
         return {
             id: 'myid2',
             class: 'myCalendars',
-            height: 300,
             lang: 'es',
             allDaySlot: false,
             header: {
@@ -87,11 +84,17 @@ Template.HomeTemplate.events({
         event.target.start.value = "";
         event.target.end.value = "";
         event.target.description.value = "";
+        $("#createEvent").modal("hide");
     },
 
     'click .refresh': function (e, template) {
         //template.$('#myid2').fullCalendar('refetchEvents');
         template.$('.myCalendars').fullCalendar('refetchEvents');
+    },
+
+    'click .create': function(e){
+        e.preventDefault();
+        $("#createEvent").modal("show");
     }
 });
 
@@ -106,5 +109,11 @@ Template.eventList.events({
         event.preventDefault();
         id = this._id;
         Meteor.call('deleteEvent', id);
+    },
+
+    'click .update': function(e){
+        e.preventDefault();
+        $(".updateModal").show();
+        //Session.$set("eventInfo", {id: this._id, title: this.title, start: this.start, end: this.end, description: this.description});
     }
 });
