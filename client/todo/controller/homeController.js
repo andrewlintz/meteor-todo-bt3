@@ -1,13 +1,13 @@
 Meteor.subscribe("tasks");
 
-// Template.navigation debera ir en otro archivo
-Template.navigation.helpers({
+// revisar correctamente los params de esta sección
+/*Template.navigation.helpers({
     maybeSelected: function () {
         var currentRoute = Router.current();
         return currentRoute &&
-        this._id === currentRoute.params._id ? 'selected' : '';
+        this._id === currentRoute.params ? 'active' : '';
     }
-});
+});*/
 
 Template.Home.helpers({
     tasks: function(){

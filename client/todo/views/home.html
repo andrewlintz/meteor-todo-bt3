@@ -1,5 +1,19 @@
 <template name="Home">
     <div class="container">
+        {{#unless currentUser}}
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>TODO METEOR.JS TEST</h3>
+                        <p>Aplicación de prueba de <a href="https://www.meteor.com/">Meteor.js</a> y de diversas técnicas de desarrollo en la misma, puedes probar la aplicación registrándote y veras diferentes animaciones y diversas librerías en acción.</p>
+                        <p>Debido a la naturaleza de prueba de la esta App, solo debes dar un nombre de usuario cualquiera arriba en el formulario de altas.</p>
+                        <p>Aún se esta probando el sistema de roles y hay algunos pequeños bugs que requieren recargar el sitio, como cuando por primera ves deseas hacer el contenido publico, hay un error en la animación. Aparter de eso los servicios funcionan correctamente.</p>
+                        <p>Si deseas revisar el código de esta App lo encuentras aquí en este <a target="_blank" href="https://github.com/gbelot2003/meteor-todo-bt3">repo</a></p>
+                    </div>
+                </div>
+            </div>
+        {{/unless}}
+
         {{#if currentUser}}
         <div class="row">
             <h2>Todos</h2>
